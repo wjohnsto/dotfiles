@@ -6,6 +6,6 @@ echo "Resetting neovim configuration..."
 
 rm -rf ~/.local/share/nvim
 
-./deploy.sh
-
 echo "Done resetting!"
+
+./deploy.sh

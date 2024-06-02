@@ -1,0 +1,9 @@
+[user]
+	name = Will Johnston
+	email = will-github@wwj.dev
+[init]
+	defaultBranch = main
+[credential]
+	helper = store
+[push]
+	autoSetupRemote = true
