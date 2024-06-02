@@ -36,7 +36,7 @@ autocmd({"BufWritePre"}, {
 })
 
 autocmd('LspAttach', {
-    group = ThePrimeagenGroup,
+    group = wjohnsto_group,
     callback = function(e)
         local opts = {
             buffer = e.buf
