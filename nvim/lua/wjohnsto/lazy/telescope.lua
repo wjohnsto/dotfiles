@@ -10,9 +10,9 @@ return {
     telescope.setup({
       extensions = {
         ["ui-select"] = {
-          require("telescope.themes").get_dropdown({})
-        }
-      }
+          require("telescope.themes").get_dropdown({}),
+        },
+      },
     })
 
     telescope.load_extension("ui-select")
@@ -23,5 +23,5 @@ return {
     vim.keymap.set("n", "<C-g>", builtin.grep_string, {})
     vim.keymap.set("n", "<C-b>", builtin.buffers, {})
     vim.keymap.set("n", "<C-h>", builtin.help_tags, {})
-  end
+  end,
 }

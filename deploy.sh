@@ -5,6 +5,7 @@ echo "Deploying configs..."
 echo "Deploying home dotfiles..."
 
 cp -r ./home/ ~/
+cp -a ./home/. ~/
 
 source ~/.bashrc
 

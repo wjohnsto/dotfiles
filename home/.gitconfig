@@ -7,3 +7,7 @@
 	helper = store
 [push]
 	autoSetupRemote = true
+[merge]
+	ff = only
+[pull]
+	ff = only
