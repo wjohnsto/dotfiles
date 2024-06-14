@@ -28,7 +28,7 @@ return {
         "unocss",
         "dockerls",
         "docker_compose_language_service",
-        "eslint",
+--        "eslint",
         "gopls",
         "html",
         "htmx",

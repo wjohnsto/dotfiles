@@ -4,6 +4,6 @@ export EDITOR="$VISUAL"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
-alias fm="cd ~/src/funnelmind/promarsal"
-alias vfm="cd ~/src/funnelmind/promarsal && nvim ."
+alias instasdr="cd ~/src/funnelmind/instasdr && nvim"
+alias dotfiles="cd ~/src/dotfiles && nvim"
 

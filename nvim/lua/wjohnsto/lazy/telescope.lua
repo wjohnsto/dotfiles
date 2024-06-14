@@ -3,7 +3,11 @@ return {
 
   tag = "0.1.6",
 
-  dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope-ui-select.nvim",
+    "vuki656/package-info.nvim",
+  },
 
   config = function()
     local telescope = require("telescope")
@@ -12,9 +16,14 @@ return {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown({}),
         },
+        package_info = {
+          -- Optional theme (the extension doesn't set a default theme)
+          theme = "ivy",
+        },
       },
     })
 
+    telescope.load_extension("package_info")
     telescope.load_extension("ui-select")
 
     local builtin = require("telescope.builtin")

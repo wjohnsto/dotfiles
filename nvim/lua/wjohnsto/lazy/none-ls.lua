@@ -14,13 +14,17 @@ return {
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.sqlfmt,
         null_ls.builtins.formatting.stylua,
-        require("none-ls.diagnostics.eslint_d"),
+        -- require("none-ls.diagnostics.eslint_d"),
       },
     })
 
     require("mason-null-ls").setup({
-      ensure_installed = { "stylua", "prettierd", "eslint_d", "sqlfmt" },
-      automatic_installation = true;
+      ensure_installed = {
+        "stylua",
+        "prettierd", --[["eslint_d",]]
+        "sqlfmt",
+      },
+      automatic_installation = true,
     })
   end,
 }
