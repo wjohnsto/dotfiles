@@ -8,4 +8,4 @@ rm -rf ~/.local/share/nvim
 
 echo "Done resetting!"
 
-./deploy.sh
+./deployh

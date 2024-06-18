@@ -11,8 +11,6 @@ source ~/.bashrc
 
 echo "Deploying fonts..."
 
-cp -r ./.fonts/ ~/.fonts/
-
 fc-cache -f ~/.fonts
 
 echo "Deploying neovim configuration..."

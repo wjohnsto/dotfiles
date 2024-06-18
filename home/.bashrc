@@ -140,3 +140,5 @@ esac
 # pnpm end
 
 . "$HOME/.cargo/env"
+
+eval "$(starship init bash)"

@@ -6,4 +6,4 @@ alias vi="nvim"
 alias v="nvim"
 alias instasdr="cd ~/src/funnelmind/instasdr && nvim"
 alias dotfiles="cd ~/src/dotfiles && nvim"
-
+alias wezterm="flatpak run org.wezfurlong.wezterm"
