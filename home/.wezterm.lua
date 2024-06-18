@@ -9,7 +9,6 @@ config.font = wezterm.font_with_fallback({
   { family = "icomoon",            weight = "Medium" },
 })
 
-config.color_scheme_dirs = { "~/.wezterm/color_schemes" }
 config.color_scheme = "tokyonight_moon"
 
 config.automatically_reload_config = true
