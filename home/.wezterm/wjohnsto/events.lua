@@ -16,8 +16,9 @@ function exports:apply()
       args = cmd.args
     end
 
-    mux.spawn_window({ workspace = "default", cwd = wezterm.home_dir, args = args })
+    local tab, pane, window = mux.spawn_window({ workspace = "default", cwd = wezterm.home_dir, args = args })
     mux.set_active_workspace("default")
+    window:gui_window():maximize()
   end)
 end
 

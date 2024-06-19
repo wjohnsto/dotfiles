@@ -140,5 +140,6 @@ esac
 # pnpm end
 
 . "$HOME/.cargo/env"
+. "$HOME/wezterm.sh"
 
 eval "$(starship init bash)"

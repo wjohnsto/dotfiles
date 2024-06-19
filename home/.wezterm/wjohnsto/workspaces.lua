@@ -50,7 +50,7 @@ local function get_workspaces()
   local dirs = {
     {
       path = wezterm.home_dir .. "/src",
-      ignores = { "node_modules" },
+      ignores = { "node_modules", "GUI-DNS-changer-for-linux" },
     },
   }
 
@@ -79,7 +79,7 @@ local action = wezterm.action_callback(function(window, pane, id, label)
   end
 
   if not workspace_exists then
-    mux.spawn_window({ workspace = label, cwd = id })
+    mux.spawn_window({ workspace = label, cwd = id  })
     wezterm.log_info("spawning window for " .. id .. ".")
   end
 

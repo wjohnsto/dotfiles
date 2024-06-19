@@ -19,7 +19,5 @@ fi
 alias vimdiff='nvim -d'
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-#bind '""': "\"tmux-sessionizer\n\"
-bind '"\C-f": "tmux-sessionizer\n"'
 PATH=~/.npm-global/bin:$PATH
 . "$HOME/.cargo/env"
