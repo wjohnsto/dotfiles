@@ -37,6 +37,7 @@ return {
 				},
 				{
 					ft = "trouble",
+          title = "Trouble",
 					filter = function(_, win)
             if vim.w[win].trouble == nil then
               return false
