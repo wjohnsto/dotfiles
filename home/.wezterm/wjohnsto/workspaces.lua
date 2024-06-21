@@ -50,7 +50,7 @@ local function get_workspaces()
   local dirs = {
     {
       path = wezterm.home_dir .. "/src",
-      ignores = { "node_modules", "GUI-DNS-changer-for-linux" },
+      ignores = { "node_modules" },
     },
   }
 
