@@ -13,7 +13,6 @@ return {
 
 	config = function()
 		local telescope = require("telescope")
-		local open_with_trouble = require("trouble.sources.telescope").open
 		telescope.setup({
 			defaults = {
 				get_selection_window = function()
