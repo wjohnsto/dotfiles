@@ -5,19 +5,22 @@ return {
 		local opts = {
 			bottom = {
 				{
-					ft = "toggleterm",
-					size = { height = 0.4 },
+					ft = "trouble",
+					title = "Trouble",
 					filter = function(_, win)
-						return vim.api.nvim_win_get_config(win).relative == ""
+            if vim.w[win].trouble == nil then
+              return false
+            end
+
+						return vim.w[win].trouble.mode ~= "symbols"
 					end,
 				},
-				"Trouble",
 				{ ft = "qf", title = "QuickFix" },
 				{
 					ft = "help",
 					size = { height = 20 },
 					filter = function(buf)
-						return vim.bo[buf].buftype == "help"
+						return vim.b[buf].buftype == "help"
 					end,
 				},
 				{ title = "Neotest Output", ft = "neotest-output-panel", size = { height = 15 } },
@@ -33,25 +36,15 @@ return {
 					size = { height = 0.5 },
 				},
 				{
-					title = "Neo-Tree Buffers",
-					ft = "neo-tree",
-					filter = function(buf)
-						return vim.b[buf].neo_tree_source == "buffers"
-					end,
-					pinned = true,
-					open = "Neotree position=top buffers",
-				},
+					ft = "trouble",
+					filter = function(_, win)
+            if vim.w[win].trouble == nil then
+              return false
+            end
 
-				{
-					title = "Neo-Tree Git",
-					ft = "neo-tree",
-					filter = function(buf)
-						return vim.b[buf].neo_tree_source == "git_status"
+						return vim.w[win].trouble.mode == "symbols"
 					end,
-					pinned = true,
-					open = "Neotree position=right git_status",
 				},
-				"neo-tree",
 			},
 			keys = {
 				-- close window

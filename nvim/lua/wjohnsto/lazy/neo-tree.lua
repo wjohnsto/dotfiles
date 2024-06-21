@@ -37,13 +37,13 @@ return {
         filtered_items = {
           visible = false,
           hide_dotfiles = false,
-          hide_gitignored = true,
+          hide_gitignored = false,
           hide_hidden = false,
           always_show = { ".gitignore", ".env" },
           always_show_by_pattern = { -- uses glob style patterns
             ".env*",
           },
-          never_show = { ".DS_Store", "thumbs.db" },
+          never_show = { ".DS_Store", "thumbs.db", ".git", "node_modules" },
         },
         follow_current_file = {
           enabled = true,

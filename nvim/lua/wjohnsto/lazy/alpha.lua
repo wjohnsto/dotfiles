@@ -28,8 +28,17 @@ return {
       [[                                                                       ]],
     }
 
+    local function get_last_partial(path)
+      local t = {}
+      for str in string.gmatch(path, "([^/]+)") do
+        table.insert(t, str)
+      end
+
+      return t[#t]
+    end
+
     local function mru_title()
-      return "Recently used files in: " .. vim.fn.getcwd()
+      return "Recently used files in: " .. get_last_partial(vim.fn.getcwd())
     end
 
     local mru_cwd = {
@@ -45,7 +54,9 @@ return {
         {
           type = "group",
           val = function()
-            local mru = startify.mru(0, vim.fn.getcwd())
+            local cwd = vim.fn.getcwd()
+            local mru = startify.mru(0, cwd .. "/")
+            local last_partial = get_last_partial(cwd)
 
             for _, v in pairs(mru.val) do
               v.opts = {
@@ -58,6 +69,7 @@ return {
                 hl_shortcut = "Keyword",
                 keymap = v.opts.keymap,
               }
+              v.val = v.val:gsub("%" .. cwd, last_partial)
             end
             mru.opts = { shrink_margin = false }
             return { mru }

@@ -15,6 +15,17 @@ autocmd("TextYankPost", {
   end
 })
 
+autocmd("BufRead", {
+  callback = function(ev)
+    if vim.bo[ev.buf].buftype == "quickfix" then
+      vim.schedule(function()
+        vim.cmd([[cclose]])
+        vim.cmd([[Trouble qflist open]])
+      end)
+    end
+  end,
+})
+
 autocmd({ "BufWritePre" }, {
   group = wjohnsto_group,
   pattern = "*",
