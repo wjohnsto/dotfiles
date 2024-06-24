@@ -143,3 +143,6 @@ esac
 . "$HOME/.wezterm/wezterm.sh"
 
 eval "$(starship init bash)"
+# Set up fzf key bindings and fuzzy completion
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+

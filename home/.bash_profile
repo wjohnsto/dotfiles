@@ -21,3 +21,4 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 PATH=~/.npm-global/bin:$PATH
 . "$HOME/.cargo/env"
+export INPUTRC=~/.inputrc
