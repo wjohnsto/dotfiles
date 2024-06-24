@@ -1,6 +1,8 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
 [░▒▓](#a3aed2)\
-[ 󰣭 ](bg:#a3aed2 fg:#090c0c)\
+$os\
 [](bg:#769ff0 fg:#a3aed2)\
 $directory\
 [](fg:#769ff0 bg:#394260)\
@@ -13,6 +15,70 @@ $golang\
 $php\
 [](fg:#212736 bg:#1d2230)\
 \n$character"""
+
+palette = "tokyonight"
+
+[palettes.tokyonight]
+bg_dark = "#16161e"
+bg = "#1a1b26"
+bg_highlight = "#292e42"
+terminal_black = "#414868"
+fg = "#c0caf5"
+fg_dark = "#a9b1d6"
+fg_gutter = "#3b4261"
+dark3 = "#545c7e"
+comment = "#565f89"
+dark5 = "#737aa2"
+blue0 = "#3d59a1"
+blue = "#7aa2f7"
+cyan = "#7dcfff"
+blue1 = "#2ac3de"
+blue2 = "#0db9d7"
+blue5 = "#89ddff"
+blue6 = "#b4f9f8"
+blue7 = "#394b70"
+magenta = "#bb9af7"
+magenta2 = "#ff007c"
+purple = "#9d7cd8"
+orange = "#ff9e64"
+yellow = "#e0af68"
+green = "#9ece6a"
+green1 = "#73daca"
+green2 = "#41a6b5"
+teal = "#1abc9c"
+red = "#f7768e"
+red1 = "#db4b4b"
+git_change = "#6183bb"
+git_add = "#449dab"
+git_delete = "#914c54"
+git_signs_add = "#266d6a"
+git_signs_change = "#536c9e"
+git_signs_delete = "#b2555b"
+
+[os]
+disabled = false
+style = "bg:#a3aed2 fg:#090c0c"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = " 󰣭 "
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
 
 [directory]
 style = "fg:#e3e5e5 bg:#769ff0"
@@ -60,4 +126,13 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#1d2230"
 format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+[character]
+disabled = false
+success_symbol = '[](bold fg:green)'
+error_symbol = '[](bold fg:red)'
+vimcmd_symbol = '[](bold fg:green)'
+vimcmd_replace_one_symbol = '[](bold fg:purple)'
+vimcmd_replace_symbol = '[](bold fg:purple)'
+vimcmd_visual_symbol = '[](bold fg:yellow)'
 
