@@ -7,6 +7,7 @@ function R(name)
     require("plenary.reload").reload_module(name)
 end
 
+-- Easily print a table to vim console for debugging
 function _G.dump(...)
   local objects = vim.tbl_map(vim.inspect, {...})
   print(table.unpack(objects))

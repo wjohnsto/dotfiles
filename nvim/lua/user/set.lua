@@ -1,6 +1,10 @@
+-- Line numbers
 vim.opt.nu = true
+
+-- Show line numbers relative to cursor
 vim.opt.relativenumber = true
 
+-- Default to 2 spaces for a tab
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
@@ -22,6 +26,8 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
+
+-- Add dash to recognized filename characters
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
