@@ -65,12 +65,12 @@ return {
 		telescope.load_extension("ui-select")
     telescope.load_extension("undo")
 
-    vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<CR>")
+    vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<CR>", { desc = "Telescope undo" })
 		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "<C-p>", builtin.find_files, {})
-		vim.keymap.set("n", "<C-f>", builtin.live_grep, {})
-		vim.keymap.set("n", "<C-g>", builtin.grep_string, {})
-		vim.keymap.set("n", "<C-b>", builtin.buffers, {})
-		vim.keymap.set("n", "<C-h>", builtin.help_tags, {})
+		vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Find files" })
+		vim.keymap.set("n", "<C-f>", builtin.live_grep, { desc = "Live grep" })
+		vim.keymap.set("n", "<C-g>", builtin.grep_string, { desc = "Find word" })
+		vim.keymap.set("n", "<C-b>", builtin.buffers, { desc = "Find buffer" })
+		vim.keymap.set("n", "<C-h>", builtin.help_tags, { desc = "Help" })
 	end,
 }

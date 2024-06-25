@@ -14,6 +14,6 @@ return {
       vim.wo.number = true
       vim.wo.rnu = true
       SetColorScheme()
-    end)
+    end, { desc = "Zen mode toggle" })
   end,
 }

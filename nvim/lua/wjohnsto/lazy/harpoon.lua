@@ -8,10 +8,10 @@ return {
 
     vim.keymap.set("n", "<leader>a", function()
       harpoon:list():add()
-    end)
+    end, { desc = "Add to harpoon" })
     vim.keymap.set("n", "<leader>r", function()
       harpoon:list():remove()
-    end)
+    end, { desc = "Remove from harpoon" })
 
     -- basic telescope configuration
     local conf = require("telescope.config").values

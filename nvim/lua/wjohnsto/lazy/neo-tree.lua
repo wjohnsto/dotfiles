@@ -52,7 +52,7 @@ return {
       },
     })
 
-    vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle left<CR>")
+    vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle left<CR>", { desc = "Toggle neo-tree" })
     vim.cmd([[nnoremap \ :Neotree filesystem reveal left<CR>]])
   end,
 }
