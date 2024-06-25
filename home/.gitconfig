@@ -4,10 +4,11 @@
 [init]
 	defaultBranch = main
 [credential]
-	helper = store
+  helper = store
+[core]
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
+[color]
+    ui = auto
 [push]
 	autoSetupRemote = true
-[merge]
-	ff = only
-[pull]
-	ff = only
