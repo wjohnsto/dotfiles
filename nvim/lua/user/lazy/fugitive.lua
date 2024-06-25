@@ -1,11 +1,19 @@
 return {
+  -- Fugitive is the premier Vim plugin for Git.
+  -- Or maybe it's the premier Git plugin for Vim?
+  -- Either way, it's "so awesome, it should be illegal".
+  -- That's why it's called Fugitive.
+  -- https://github.com/tpope/vim-fugitive
   "tpope/vim-fugitive",
   config = function()
+    -- Enter fugitive
     vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
     local fugitive_group = vim.api.nvim_create_augroup("wjohnsto_fugitive", {})
 
     local autocmd = vim.api.nvim_create_autocmd
+
+    -- Only bind the commands when you enter the fugitive buffer
     autocmd("BufWinEnter", {
       group = fugitive_group,
       pattern = "*",

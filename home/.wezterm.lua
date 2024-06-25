@@ -1,5 +1,5 @@
 local wezterm = require("wezterm")
-local wjohnsto = require("wjohnsto")
+local user = require("user")
 
 local config = {}
 
@@ -10,6 +10,6 @@ end
 config.keys = {}
 config.key_tables = {}
 
-wjohnsto:apply(config)
+user:apply(config)
 
 return config

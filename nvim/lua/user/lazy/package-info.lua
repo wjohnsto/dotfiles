@@ -1,6 +1,9 @@
 return {
+  -- All the npm/yarn/pnpm commands I don't want to type
+  -- https://github.com/vuki656/package-info.nvim
 	"vuki656/package-info.nvim",
 	dependencies = {
+    -- See neo-tree.lua
 		"MunifTanjim/nui.nvim",
 	},
 	config = function()
@@ -11,9 +14,10 @@ return {
 			package_manager = "npm",
 		})
 
-		local pinfo_group = vim.api.nvim_create_augroup("wjohnsto_pinfo", {})
+		local pinfo_group = vim.api.nvim_create_augroup("pinfo", {})
 
 		local autocmd = vim.api.nvim_create_autocmd
+    -- Only bind keys when in a package.json file
 		autocmd("BufWinEnter", {
 			group = pinfo_group,
 			pattern = "*",
@@ -26,7 +30,6 @@ return {
 				local bufnr = vim.api.nvim_get_current_buf()
 				local opts = { buffer = bufnr, remap = false, silent = true, desc = "Update pkg version" }
 
-				print("test")
 				-- Update dependency on the line
 				vim.keymap.set({ "n" }, "<leader>u", package_info.update, opts)
 			end,

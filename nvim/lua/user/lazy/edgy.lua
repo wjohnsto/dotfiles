@@ -1,10 +1,13 @@
 return {
+  -- A Neovim plugin to easily create and manage predefined window layouts, bringing a new edge to your workflow.
+  -- https://github.com/folke/edgy.nvim
 	"folke/edgy.nvim",
 	event = "VeryLazy",
 	opts = function()
 		local opts = {
 			bottom = {
 				{
+          -- Open Trouble windows in a bottom split
 					ft = "trouble",
 					title = "Trouble",
 					filter = function(_, win)
@@ -12,9 +15,11 @@ return {
               return false
             end
 
+            -- We want document symbols to open in a left split
 						return vim.w[win].trouble.mode ~= "symbols"
 					end,
 				},
+        -- All qflists
 				{ ft = "qf", title = "QuickFix" },
 				{
 					ft = "help",
@@ -35,6 +40,7 @@ return {
 					end,
 					size = { height = 0.5 },
 				},
+        -- Document symbols
 				{
 					ft = "trouble",
           title = "Trouble",

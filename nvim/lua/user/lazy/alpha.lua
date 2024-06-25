@@ -1,3 +1,7 @@
+-- α alpha-nvim
+-- alpha is a fast and fully programmable greeter for neovim.
+-- https://github.com/goolord/alpha-nvim/
+
 return {
 	"goolord/alpha-nvim",
 	event = "VimEnter",
@@ -7,7 +11,11 @@ return {
 
 	config = function()
 		local alpha = require("alpha")
+
+		-- Primary theme
 		local dashboard = require("alpha.themes.dashboard")
+
+		-- Used to get most recently used list
 		local startify = require("alpha.themes.startify")
 
 		dashboard.section.header.val = {
@@ -82,7 +90,6 @@ return {
 							v.opts = {
 								position = "center",
 								shortcut = v.opts.shortcut,
-								--shortcut = sc,
 								cursor = 3,
 								width = 50,
 								align_shortcut = "left",
@@ -101,12 +108,10 @@ return {
 
 		-- Set menu
 		dashboard.section.buttons.val = {
-			--dashboard.button("s", "󰈚   Restore Session", ":SessionRestore<cr>"),
 			dashboard.button("e", "   New file", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("f", "   Find file", ":Telescope find_files<CR>"),
 			dashboard.button("g", "󰱼   Find word", ":Telescope live_grep<CR>"),
 			dashboard.button("r", "   All recent files", ":Telescope oldfiles<CR>"),
-			--dashboard.button("c", "   Config", ":e $MYVIMRC <CR>"),
 			dashboard.button("m", "󱌣   Mason", ":Mason<CR>"),
 			dashboard.button("l", "󰒲   Lazy", ":Lazy<CR>"),
 			dashboard.button("u", "󰂖   Update plugins", "<cmd>lua require('lazy').sync()<CR>"),

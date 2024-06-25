@@ -1,7 +1,7 @@
-require("wjohnsto.remap")
-require("wjohnsto.set")
-require("wjohnsto.lazy_init")
-require("wjohnsto.autocmd")
+require("user.remap")
+require("user.set")
+require("user.lazy_init")
+require("user.autocmd")
 
 function R(name)
     require("plenary.reload").reload_module(name)
