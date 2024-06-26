@@ -1,11 +1,13 @@
 -- Call this from anywhere to set the color scheme
 -- @param color string the color scheme
-function SetColorScheme(color)
+function ColorScheme(color)
 	color = color or "tokyonight"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+	return color
 end
 
 return {
@@ -43,6 +45,6 @@ return {
 			lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 		})
 
-		SetColorScheme()
+		ColorScheme()
 	end,
 }

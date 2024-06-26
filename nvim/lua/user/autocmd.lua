@@ -56,7 +56,8 @@ autocmd("LspAttach", {
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
 
 		-- Signature info
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("Hover info"))
+    -- Not needed in Neovim >=0.10.0
+		--vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("Hover info"))
 
 		-- Go to implementation
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts("Go to implementation"))
@@ -88,7 +89,8 @@ autocmd("LspAttach", {
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Fine references"))
 
     -- Open diagnostics flow
-		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts("Open diagnostic float"))
+    -- Mapped to <C-W>d or <C-W><C-D> in Neovim >=0.10.0 ... good enough
+		-- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts("Open diagnostic float"))
 
     -- Goto next diagnostic issue
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts("[diag] Goto next"))
