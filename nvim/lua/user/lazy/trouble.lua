@@ -44,7 +44,7 @@ return {
       -- Toggle document symbols
 			vim.keymap.set(
 				"n",
-				"<leader>qs",
+				"<leader>ds",
 				"<cmd>Trouble symbols toggle focus=false<CR>",
 				{ desc = "Trouble symbols" }
 			)
