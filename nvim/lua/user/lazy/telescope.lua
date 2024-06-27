@@ -52,7 +52,7 @@ return {
           "--column",
           "--smart-case",
           "--glob",
-          "!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,**/pnpm-lock.yaml}",
+          "!{**/.git/*,**/.next/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,**/pnpm-lock.yaml}",
           "-u", -- thats the new thing
         },
         file_ignore_patterns = {
@@ -61,6 +61,7 @@ return {
           "dist",
           "yarn.lock",
           ".git",
+          ".next",
           ".fonts",
         },
       },

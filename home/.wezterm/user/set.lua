@@ -13,7 +13,7 @@ function exports:apply(config)
     top = verticalPadding,
     bottom = verticalPadding,
   }
-
+  config.window_decorations = "RESIZE"
   config.front_end = "OpenGL"
   config.scrollback_lines = 10000
   config.automatically_reload_config = true
