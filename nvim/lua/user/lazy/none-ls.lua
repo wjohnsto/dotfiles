@@ -3,6 +3,7 @@ return {
 	-- - making it easier to use both plugins together.
 	-- https://github.com/jay-babu/mason-null-ls.nvim
 	"jay-babu/mason-null-ls.nvim",
+  event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		-- See lsp.lua
 		"williamboman/mason.nvim",
@@ -16,14 +17,14 @@ return {
 	config = function()
 		require("mason").setup()
 
-		local null_ls = require("null-ls")
-		null_ls.setup({
-			sources = {
-				null_ls.builtins.formatting.prettierd,
-				null_ls.builtins.formatting.sqlfmt,
-				null_ls.builtins.formatting.stylua,
-			},
-		})
+		-- local null_ls = require("null-ls")
+		-- null_ls.setup({
+		-- 	sources = {
+		-- 		null_ls.builtins.formatting.prettierd,
+		-- 		null_ls.builtins.formatting.sqlfmt,
+		-- 		null_ls.builtins.formatting.stylua,
+		-- 	},
+		-- })
 
 		require("mason-null-ls").setup({
 			ensure_installed = {

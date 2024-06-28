@@ -46,7 +46,6 @@ return {
         "remark_ls",
         "mdx_analyzer",
         "prismals",
-        "pylsp",
         "sqlls",
         "tailwindcss",
         "templ",
