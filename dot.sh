@@ -4,6 +4,7 @@
 . scripts/deploy.sh
 . scripts/reset.sh
 . scripts/update.sh
+. scripts/symlinks.sh
 
 info "Dotfiles setup..."
 log "What would you like to do?"
