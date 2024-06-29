@@ -23,15 +23,18 @@ return {
         end
 
         local bufnr = vim.api.nvim_get_current_buf()
-        local opts = { buffer = bufnr, remap = false }
 
         vim.keymap.set("n", "<leader>p", function()
           vim.cmd.Git("push")
-        end, opts)
+        end, { buffer = bufnr, remap = false, desc = "git push" })
 
-        vim.keymap.set("n", "<leader>P", ":Git pull<CR>", opts)
+        vim.keymap.set("n", "<leader>P", ":Git pull<CR>", { buffer = bufnr, remap = false, desc = "git pull" })
 
-        vim.keymap.set("n", "<leader>u", ":Git push -u origin ", opts)
+        vim.keymap.set("n", "<leader>u", ":Git push -u origin ", {
+          buffer = bufnr,
+          remap = false,
+          desc = "git push -u"
+        })
       end,
     })
 
