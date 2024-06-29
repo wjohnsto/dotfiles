@@ -6,6 +6,10 @@ yellow="$(tput setaf 3)"
 green="$(tput setaf 2)"
 blue="$(tput setaf 4)"
 
+ensure_dir() {
+    [ ! -d $1 ] && mkdir $1
+}
+
 log() {
     printf "%s\n" "$1"
 }
