@@ -140,7 +140,7 @@ esac
 # pnpm end
 
 . "$HOME/.cargo/env"
-. "$HOME/.wezterm/wezterm.sh"
+. "$HOME/.config/wezterm/wezterm.sh"
 
 eval "$(starship init bash)"
 # Set up fzf key bindings and fuzzy completion
