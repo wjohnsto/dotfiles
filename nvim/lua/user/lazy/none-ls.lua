@@ -17,20 +17,10 @@ return {
 	config = function()
 		require("mason").setup()
 
-		-- local null_ls = require("null-ls")
-		-- null_ls.setup({
-		-- 	sources = {
-		-- 		null_ls.builtins.formatting.prettierd,
-		-- 		null_ls.builtins.formatting.sqlfmt,
-		-- 		null_ls.builtins.formatting.stylua,
-		-- 	},
-		-- })
-
 		require("mason-null-ls").setup({
 			ensure_installed = {
 				"stylua",
 				"prettierd",
-				"sqlfmt",
 			},
 			automatic_installation = true,
 		})
