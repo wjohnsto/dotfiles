@@ -79,7 +79,7 @@ local action = wezterm.action_callback(function(window, pane, id, label)
   end
 
   if not workspace_exists then
-    mux.spawn_window({ workspace = label, cwd = id  })
+    mux.spawn_window({ workspace = label, cwd = id })
     wezterm.log_info("spawning window for " .. id .. ".")
   end
 
@@ -99,12 +99,15 @@ function exports:apply(config)
       -- Asks to select a workspace from a list of pre-defined and already existing workspaces.
       -- First, if the selected workspace does not already exist, spawn a window in it with
       -- a specifed cwd. Then, switch to the workspace.
-      action = act.InputSelector({
-        title = "Select workspace",
-        choices = get_workspaces(),
+      action = wezterm.action_callback(function(window, pane)
+        window:perform_action(
+          act.InputSelector({
+            title = "Select workspace",
+            choices = get_workspaces(),
 
-        action = action,
-      }),
+            action = action,
+          }), pane)
+      end)
     },
     {
       key = "w",
