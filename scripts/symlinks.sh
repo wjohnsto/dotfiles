@@ -1,22 +1,15 @@
 #!/bin/bash
 
-echo $(pwd)
-
 # Get the absolute path of the directory where the script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_DIR="$SCRIPT_DIR/.."
-CONFIG_FILE="$ROOT_DIR/symlinks.conf"
+ROOT_DIR=$(pwd)
+SYMLINKS_CONFIG_FILE="$ROOT_DIR/symlinks.conf"
 
 . $SCRIPT_DIR/utils.sh
 
-# Check if configuration file exists
-if [ ! -f "$CONFIG_FILE" ]; then
-    warn "Symlink configuration file not found: $CONFIG_FILE"
-    exit 1
-fi
-
 create_symlinks() {
-    info "Creating symbolic links..."
+  check_config $SYMLINKS_CONFIG_FILE
+  info "Creating symbolic links..."
 
     # Read dotfile links from the config file
     while IFS=: read -r source target || [ -n "$source" ]; do
@@ -55,10 +48,11 @@ create_symlinks() {
             ln -s "$source" "$target"
             success "Created symbolic link: $target"
         fi
-    done <"$CONFIG_FILE"
+    done <"$SYMLINKS_CONFIG_FILE"
 }
 
 delete_symlinks() {
+  check_config $SYMLINKS_CONFIG_FILE
     info "Deleting symbolic links..."
 
     while IFS=: read -r _ target || [ -n "$target" ]; do
@@ -79,6 +73,6 @@ delete_symlinks() {
         else
             warn "Not found: $target"
         fi
-    done <"$CONFIG_FILE"
+    done <"$SYMLINKS_CONFIG_FILE"
 }
 

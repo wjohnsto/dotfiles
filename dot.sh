@@ -2,19 +2,26 @@
 
 . scripts/utils.sh
 . scripts/deploy.sh
+. scripts/init.sh
 . scripts/reset.sh
 . scripts/update.sh
 . scripts/symlinks.sh
 
 info "Dotfiles setup..."
 log "What would you like to do?"
-log "  [0] Deploy (default)"
-log "  [1] Reset"
-log "  [2] Update"
+log "  [0] Initialize"
+log "  [1] Deploy (default)"
+log "  [2] Reset"
+log "  [3] Update"
 log "  [q] Quit/Cancel"
 read -p "? " action
 
 case "$action" in
+   "0")
+     log "Initializing"
+     initialize
+     deploy
+   ;;
    "1")
      log "Reseting"
      reset

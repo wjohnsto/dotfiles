@@ -34,3 +34,18 @@ warn() {
     printf "%s==> %s%s\n" "$yellow" "$1" "$default_color"
 }
 
+check_quit() {
+  if [ "$1" == "q" ]; then
+    info "Quitting..."
+    exit 1
+  fi
+}
+
+check_config() {
+    # Check if configuration file exists
+    if [ ! -f "$0" ]; then
+        warn "Configuration file not found: $0"
+        exit 1
+    fi
+}
+
