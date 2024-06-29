@@ -5,11 +5,12 @@
 . scripts/reset.sh
 . scripts/update.sh
 
-info "Dotfiles intallation initialized..."
+info "Dotfiles setup..."
 log "What would you like to do?"
 log "  [0] Deploy (default)"
 log "  [1] Reset"
-log "  [2] Update" action
+log "  [2] Update"
+log "  [q] Quit/Cancel"
 read -p "? " action
 
 case "$action" in
@@ -23,6 +24,7 @@ case "$action" in
      reset
      deploy
    ;;
+  "q") ;;
    *)
       log "Deploying"
       deploy
