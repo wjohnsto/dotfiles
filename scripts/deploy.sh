@@ -6,11 +6,15 @@ ROOT_DIR="$SCRIPT_DIR/.."
 
 . $SCRIPT_DIR/utils.sh
 
-deploy_dotfiles() {
-  info "Deploying dotfiles..."
+deploy_bash() {
+  info "Deploying bash files..."
 
-  cp -r $ROOT_DIR/home/ ~/
-  cp -a $ROOT_DIR/home/. ~/
+  cp -a $ROOT_DIR/bash/. ~/
+}
+
+deploy_git() {
+  info "Deploying git config..."
+  cp -a $ROOT_DIR/git/. ~/
 }
 
 deploy_fonts() {
@@ -41,6 +45,7 @@ deploy_nvim() {
   ensure_dir ~/.config/
   ensure_dir ~/.config/nvim
   rm -rf ~/.config/nvim
+  cp $ROOT_DIR/nvim/.vimrc ~/
   cp -r $ROOT_DIR/nvim ~/.config/
 }
 
@@ -51,7 +56,8 @@ deploy_final() {
 }
 
 deploy() {
-  deploy_dotfiles
+  deploy_bash
+  deploy_git
   deploy_fonts
   deploy_starship
   deploy_wezterm

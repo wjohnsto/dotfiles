@@ -1,9 +1,7 @@
-alias vimdiff='nvim -d'
-export VISUAL=nvim
-export EDITOR="$VISUAL"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
+alias vimdiff='nvim -d'
 alias instasdr="cd ~/src/funnelmind/instasdr && nvim"
 alias dotfiles="cd ~/src/dotfiles && nvim"
 alias wezterm="flatpak run org.wezfurlong.wezterm"
