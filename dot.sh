@@ -22,12 +22,12 @@ case "$action" in
      initialize
      deploy
    ;;
-   "1")
+   "2")
      log "Reseting"
      reset
      deploy
    ;;
-   "2")
+   "3")
      log "Updating"
      reset
      deploy
