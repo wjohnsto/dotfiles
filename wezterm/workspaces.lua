@@ -3,6 +3,11 @@ local mux = wezterm.mux
 local act = wezterm.action
 
 local exports = {}
+local function clean_workspace_name(name)
+  name = name:gsub("* ", "")
+
+  return name
+end
 
 local function get_workspaces()
   local choices = {}
@@ -10,19 +15,22 @@ local function get_workspaces()
 
   -- Add existing workspaces to the list of choices.
   for _, name in pairs(mux.get_workspace_names()) do
-    table.insert(choices, { label = name, id = name })
+    local cname = clean_workspace_name(name)
+    table.insert(choices, { label = "* " .. cname, id = cname })
   end
 
   -- Keep track of added workspaces.
   local added = {}
+  local existing = {}
   for _, choice in pairs(choices) do
-    added[choice.label] = true
+    added[choice.id] = true
+    existing[choice.id] = true
   end
 
-  local function add_workspace(path, choice)
-    if added[path] == nil then
+  local function add_workspace(choice)
+    if added[choice.id] == nil then
       table.insert(choices, choice)
-      added[path] = true
+      added[choice.id] = true
     end
   end
 
@@ -36,7 +44,7 @@ local function get_workspaces()
     for _, name in ipairs(wezterm.read_dir(path)) do
       if Is_Dir(name) then
         if Is_Git(name) then
-          add_workspace(path, { label = path, id = path })
+          add_workspace({ label = path, id = path })
           goto continue
         end
 
@@ -59,6 +67,16 @@ local function get_workspaces()
   end
 
   table.sort(choices, function(a, b)
+    local ax = existing[a.id]
+    local bx = existing[b.id]
+    if ax == true and bx == false then
+      return true
+    end
+
+    if ax == false and bx == true then
+      return false
+    end
+
     return a.label < b.label
   end)
 
@@ -72,20 +90,21 @@ local action = wezterm.action_callback(function(window, pane, id, label)
 
   local workspace_exists = false
   for _, name in pairs(mux.get_workspace_names()) do
-    if name == id then
+    local cname = clean_workspace_name(name)
+    if cname == id then
       workspace_exists = true
       break
     end
   end
 
   if not workspace_exists then
-    mux.spawn_window({ workspace = label, cwd = id })
+    mux.spawn_window({ workspace = clean_workspace_name(label), cwd = id })
     wezterm.log_info("spawning window for " .. id .. ".")
   end
 
   window:perform_action(
     act.SwitchToWorkspace({
-      name = label,
+      name = clean_workspace_name(label),
     }),
     pane
   )
