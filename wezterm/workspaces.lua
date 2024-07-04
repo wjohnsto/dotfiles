@@ -3,6 +3,8 @@ local mux = wezterm.mux
 local act = wezterm.action
 
 local exports = {}
+local git_project_home_dir = wezterm.home_dir .. "/src"
+
 local function clean_workspace_name(name)
   name = name:gsub("* ", "")
 
@@ -57,7 +59,7 @@ local function get_workspaces()
   -- Add pre-defined workspaces to the list of choices if they exist.
   local dirs = {
     {
-      path = wezterm.home_dir .. "/src",
+      path = git_project_home_dir,
       ignores = { "node_modules" },
     },
   }
