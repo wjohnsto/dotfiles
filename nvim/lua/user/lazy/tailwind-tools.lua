@@ -4,8 +4,6 @@ return {
   "luckasRanarison/tailwind-tools.nvim",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   config = function()
-    require("tailwind-tools").setup({
-      custom_filetypes = { "pug" },
-    })
+    require("tailwind-tools").setup()
   end
 }

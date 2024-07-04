@@ -20,7 +20,6 @@ return {
         "lua",
         "prisma",
         "python",
-        "pug",
         "sql",
         "templ",
         "typescript",

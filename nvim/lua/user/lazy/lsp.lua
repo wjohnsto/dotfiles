@@ -60,6 +60,32 @@ return {
           })
         end,
 
+        ["cssls"] = function()
+          local lspconfig = require("lspconfig")
+          lspconfig.cssls.setup({
+            capabilities = capabilities,
+            settings = {
+              css = {
+                validate = true,
+                lint = {
+                  unknownAtRules = "ignore"
+                }
+              },
+              scss = {
+                validate = true,
+                lint = {
+                  unknownAtRules = "ignore"
+                }
+              },
+              less = {
+                validate = true,
+                lint = {
+                  unknownAtRules = "ignore"
+                }
+              },
+            },
+          })
+        end,
         -- Gets rid of those pesky errors all over the place for these globals in nvim config
         ["lua_ls"] = function()
           local lspconfig = require("lspconfig")
@@ -77,12 +103,27 @@ return {
       },
     })
 
+    require('lspconfig.ui.windows').default_options.border = 'rounded'
+    local _border = "rounded"
+
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+      vim.lsp.handlers.hover, {
+        border = _border
+      }
+    )
+
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+      vim.lsp.handlers.signature_help, {
+        border = _border
+      }
+    )
+
     vim.diagnostic.config({
       -- update_in_insert = true,
       float = {
         focusable = false,
         style = "minimal",
-        border = "rounded",
+        border = _border,
         source = "always",
         header = "",
         prefix = "",
