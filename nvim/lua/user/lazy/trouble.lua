@@ -42,12 +42,12 @@ return {
 			)
 
       -- Toggle document symbols
-			vim.keymap.set(
-				"n",
-				"<leader>ds",
-				"<cmd>Trouble symbols toggle focus=false<CR>",
-				{ desc = "Trouble symbols" }
-			)
+			-- vim.keymap.set(
+			-- 	"n",
+			-- 	"<leader>ds",
+			-- 	"<cmd>Trouble symbols toggle focus=false<CR>",
+			-- 	{ desc = "Trouble symbols" }
+			-- )
 
       -- Toggle lsp list
 			vim.keymap.set(

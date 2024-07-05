@@ -25,6 +25,8 @@ return {
     -- For those days where committing early and often doesn't work out.
     -- https://github.com/debugloop/telescope-undo.nvim
     "debugloop/telescope-undo.nvim",
+    -- See aerial.nvim
+    "stevearc/aerial.nvim",
   },
 
   config = function()
@@ -83,6 +85,14 @@ return {
           auto_validate = false,
           matcher = "fuzzy",
         },
+        aerial = {
+          -- Display symbols as <root>.<parent>.<symbol>
+          show_nesting = {
+            ["_"] = false, -- This key will be the default
+            json = true, -- You can set the option for specific filetypes
+            yaml = true,
+          },
+        },
       },
     })
 
@@ -90,6 +100,7 @@ return {
     telescope.load_extension("ui-select")
     telescope.load_extension("undo")
     telescope.load_extension("frecency")
+    telescope.load_extension("aerial")
 
     -- Open undo list
     vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<CR>", { desc = "Telescope undo" })
@@ -125,5 +136,8 @@ return {
 
     -- Open help
     vim.keymap.set("n", "<C-h>", builtin.help_tags, { desc = "Help" })
+
+    -- Open find symbols list
+    vim.keymap.set("n", "<leader>os", "<cmd>Telescope aerial<CR>", { desc = "Find symbol" })
   end,
 }

@@ -20,7 +20,7 @@ return {
 		require("mason-null-ls").setup({
 			ensure_installed = {
 				"stylua",
-				"prettierd",
+				"prettierd"
 			},
 			automatic_installation = true,
 		})
