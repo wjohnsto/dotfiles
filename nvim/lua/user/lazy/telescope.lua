@@ -27,10 +27,30 @@ return {
     "debugloop/telescope-undo.nvim",
     -- See aerial.nvim
     "stevearc/aerial.nvim",
+    -- See flash.nvim
+    "folke/flash.nvim",
   },
 
   config = function()
     local telescope = require("telescope")
+    local function flash(prompt_bufnr)
+      require("flash").jump({
+        pattern = "^",
+        label = { after = { 0, 0 } },
+        search = {
+          mode = "search",
+          exclude = {
+            function(win)
+              return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
+            end,
+          },
+        },
+        action = function(match)
+          local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+          picker:set_selection(match.pos[1] - 1)
+        end,
+      })
+    end
     telescope.setup({
       defaults = {
         get_selection_window = function()
@@ -42,6 +62,8 @@ return {
           -- So this is not needed
           -- i = { ["<c-q>"] = open_with_trouble },
           -- n = { ["<c-q>"] = open_with_trouble },
+          n = { s = flash },
+          i = { ["<c-s>"] = flash },
         },
         -- Use this to allow grepping (with ripgrep) over hidden files
         vimgrep_arguments = {
@@ -89,7 +111,7 @@ return {
           -- Display symbols as <root>.<parent>.<symbol>
           show_nesting = {
             ["_"] = false, -- This key will be the default
-            json = true, -- You can set the option for specific filetypes
+            json = true,   -- You can set the option for specific filetypes
             yaml = true,
           },
         },
