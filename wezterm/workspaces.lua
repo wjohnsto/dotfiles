@@ -11,6 +11,12 @@ local function clean_workspace_name(name)
   return name
 end
 
+local function remove_home_dir(name)
+  name = name:gsub(git_project_home_dir, "")
+
+  return name
+end
+
 local function get_workspaces()
   local choices = {}
   local max_depth = 6
@@ -18,7 +24,7 @@ local function get_workspaces()
   -- Add existing workspaces to the list of choices.
   for _, name in pairs(mux.get_workspace_names()) do
     local cname = clean_workspace_name(name)
-    table.insert(choices, { label = "* " .. cname, id = cname })
+    table.insert(choices, { label = "* " .. cname, id = git_project_home_dir .. cname })
   end
 
   -- Keep track of added workspaces.
@@ -46,7 +52,8 @@ local function get_workspaces()
     for _, name in ipairs(wezterm.read_dir(path)) do
       if Is_Dir(name) then
         if Is_Git(name) then
-          add_workspace({ label = path, id = path })
+          local short_path = remove_home_dir(path)
+          add_workspace({ label = short_path, id = path })
           goto continue
         end
 
@@ -93,7 +100,7 @@ local action = wezterm.action_callback(function(window, pane, id, label)
   local workspace_exists = false
   for _, name in pairs(mux.get_workspace_names()) do
     local cname = clean_workspace_name(name)
-    if cname == id then
+    if git_project_home_dir .. cname == id then
       workspace_exists = true
       break
     end
