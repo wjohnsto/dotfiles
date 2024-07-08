@@ -131,8 +131,8 @@ function exports:apply(config)
         window:perform_action(
           act.InputSelector({
             title = "Select workspace",
+            description = "(" .. git_project_home_dir .. ") Select workspace: Enter = accept, Esc = cancel, / = filter",
             choices = get_workspaces(),
-
             action = action,
           }), pane)
       end)
