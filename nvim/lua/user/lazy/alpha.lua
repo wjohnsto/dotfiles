@@ -7,6 +7,7 @@ return {
   event = "VimEnter",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
+    "nvim-telescope/telescope.nvim",
   },
 
   config = function()
@@ -65,6 +66,7 @@ return {
       return false
     end
 
+    local group_width = 70
     local mru_cwd = {
       type = "group",
       val = {
@@ -86,20 +88,31 @@ return {
             })
             local last_partial = get_last_partial(cwd)
 
+            local function get_val_and_hl(v)
+              local val = v.val
+              local hl = v.opts.hl
+              local short_val = val:gsub("%" .. cwd, last_partial)
+              local _, first_space = short_val:find(" ")
+              local fn = short_val:sub(first_space + 2, #short_val)
+              local short_fn = shorten_path(fn, "/", group_width - first_space - 5)
+              local ico_txt = short_val:sub(1, first_space)
+              local fn_start = short_fn:match(".*[/\\]")
+              v.val = ico_txt .. short_fn
+
+              if fn_start ~= nil then
+                table.remove(hl, #hl)
+                table.insert(hl, { "Comment", #ico_txt, #fn_start + #ico_txt })
+              end
+
+              v.opts.hl = hl
+              return ico_txt .. fn, hl
+            end
+
             for _, v in pairs(mru.val) do
               v.opts.position = "center"
-              v.opts.width = 50
+              v.opts.width = group_width
               v.opts.cursor = 3
-              -- v.opts = {
-              -- 	position = "center",
-              -- 	shortcut = v.opts.shortcut,
-              -- 	cursor = 3,
-              -- 	width = 50,
-              -- 	align_shortcut = "left",
-              -- 	hl_shortcut = "Keyword",
-              -- 	keymap = v.opts.keymap,
-              -- }
-              v.val = v.val:gsub("%" .. cwd, last_partial)
+              v.val, v.opts.hl = get_val_and_hl(v)
             end
             mru.opts = { shrink_margin = false }
             return { mru }
@@ -111,8 +124,8 @@ return {
 
     local function custom_button(sc, txt, keybind)
       local btn = dashboard.button(sc, txt, keybind)
-      local sc = btn.opts.shortcut
 
+      btn.opts.width = group_width
       btn.opts.align_shortcut = "left"
       btn.opts.shortcut = "[" .. sc .. "] "
       btn.opts.hl_shortcut = { { "Operator", 0, 1 }, { "Number", 1, #sc + 1 }, { "Operator", #sc + 1, #sc + 2 } }
@@ -122,14 +135,28 @@ return {
 
     -- Set menu
     dashboard.section.buttons.val = {
-      custom_button("e", "   New file", ":ene <BAR> startinsert <CR>"),
-      custom_button("f", "   Find file", ":Telescope find_files<CR>"),
-      custom_button("g", "󰱼   Find word", ":Telescope live_grep<CR>"),
-      custom_button("r", "   All recent files", ":Telescope oldfiles only_cwd=true<CR>"),
-      custom_button("m", "󱌣   Mason", ":Mason<CR>"),
-      custom_button("l", "󰒲   Lazy", ":Lazy<CR>"),
+      custom_button("e", "   New file", "<cmd>ene <BAR> startinsert <CR>"),
+      custom_button("f", "   Find file", "<cmd>Telescope find_files<CR>"),
+      custom_button("g", "󰱼   Find word", "<cmd>Telescope live_grep<CR>"),
+
+      custom_button("r", "   Find recent files", function()
+        -- Finds the git root and uses it as the cwd if it exists
+        local telescope = require("telescope")
+        local root = string.gsub(vim.fn.system("git rev-parse --show-toplevel"), "\n", "")
+        local opts = { workspace = "CWD", prompt_title = "Find recent files" }
+
+        if vim.v.shell_error == 0 then
+          opts.cwd = root
+        end
+
+        telescope.extensions.frecency.frecency(opts)
+      end),
+      --custom_button("r", "   All recent files", "<cmd>Telescope oldfiles only_cwd=true<CR>"),
+      custom_button("t", "   Todo", "<cmd>TodoTelescope<CR>"),
+      custom_button("m", "󱌣   Mason", "<cmd>Mason<CR>"),
+      custom_button("l", "󰒲   Lazy", "<cmd>Lazy<CR>"),
       custom_button("u", "󰂖   Update plugins", "<cmd>lua require('lazy').sync()<CR>"),
-      custom_button("q", "   Quit NVIM", ":qa<CR>"),
+      custom_button("q", "   Quit NVIM", "<cmd>qa<CR>"),
     }
     dashboard.section.buttons.opts.spacing = 0
 

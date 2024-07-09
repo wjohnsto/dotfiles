@@ -131,7 +131,7 @@ return {
     vim.keymap.set("n", "<C-S-P>", function()
       -- Finds the git root and uses it as the cwd if it exists
       local root = string.gsub(vim.fn.system("git rev-parse --show-toplevel"), "\n", "")
-      local opts = { workspace = "CWD", prompt_title = "Find MRU Files" }
+      local opts = { workspace = "CWD", prompt_title = "Find recent files" }
 
       if vim.v.shell_error == 0 then
         opts.cwd = root
