@@ -1,3 +1,8 @@
+# [metadata]
+# name = "carbonfox"
+# author = "wjohnsto"
+# origin_url = "https://github.com/EdenEast/nightfox.nvim"
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
@@ -18,20 +23,102 @@ $golang\
 palette = "carbonfox"
 
 [palettes.carbonfox]
-# ansi = ["#282828", "#ee5396", "#25be6a", "#08bdba", "#78a9ff", "#be95ff", "#33b1ff", "#dfdfe0"]
-# brights = ["#484848", "#f16da6", "#46c880", "#2dc7c4", "#8cb6ff", "#c8a5ff", "#52bdff", "#e4e4e5"]
 red = "#ee5396"
 green = "#25be6a"
 purple = "#be95ff"
-yellow = "#edff78"
+yellow = "#08bdba"
 os_bg = "#7b7c7e"
-os_fg = "#282828"
+os_fg = "#161616"
 dir_bg = "#25be6a"
-dir_fg = "#282828"
+dir_fg = "#161616"
 git_bg = "#08bdba"
-git_fg = "#282828"
+git_fg = "#161616"
 lang_bg = "#78a9ff"
-lang_fg = "#282828"
+lang_fg = "#161616"
+
+[palettes.dawnfox]
+red = "#b4637a"
+green = "#618774"
+purple = "#907aa9"
+yellow = "#ea9d34"
+os_bg = "#a8a3b3"
+os_fg = "#faf4ed"
+dir_bg = "#618774"
+dir_fg = "#faf4ed"
+git_bg = "#ea9d34"
+git_fg = "#faf4ed"
+lang_bg = "#286983"
+lang_fg = "#faf4ed"
+
+[palettes.dayfox]
+red = "#a5222f"
+green = "#396847"
+purple = "#6e33ce"
+yellow = "#ac5402"
+os_bg = "#824d5b"
+os_fg = "#f6f2ee"
+dir_bg = "#396847"
+dir_fg = "#f6f2ee"
+git_bg = "#ac5402"
+git_fg = "#f6f2ee"
+lang_bg = "#2848a9"
+lang_fg = "#f6f2ee"
+
+[palettes.duskfox]
+red = "#eb6f92"
+green = "#a3be8c"
+purple = "#c4a7e7"
+yellow = "#f6c177"
+os_bg = "#6e6a86"
+os_fg = "#232136"
+dir_bg = "#a3be8c"
+dir_fg = "#232136"
+git_bg = "#f6c177"
+git_fg = "#232136"
+lang_bg = "#569fba"
+lang_fg = "#232136"
+
+[palettes.nightfox]
+red = "#c94f6d"
+green = "#81b29a"
+purple = "#9d79d6"
+yellow = "#dbc074"
+os_bg = "#71839b"
+os_fg = "#192330"
+dir_bg = "#81b29a"
+dir_fg = "#192330"
+git_bg = "#dbc074"
+git_fg = "#192330"
+lang_bg = "#719cd6"
+lang_fg = "#192330"
+
+[palettes.nordfox]
+red = "#bf616a"
+green = "#a3be8c"
+purple = "#b48ead"
+yellow = "#ebcb8b"
+os_bg = "#7e8188"
+os_fg = "#2e3440"
+dir_bg = "#a3be8c"
+dir_fg = "#2e3440"
+git_bg = "#ebcb8b"
+git_fg = "#2e3440"
+lang_bg = "#81a1c1"
+lang_fg = "#2e3440"
+
+[palettes.terafox]
+red = "#e85c51"
+green = "#7aa4a1"
+purple = "#ad5c7c"
+yellow = "#fda47f"
+os_bg = "#587b7b"
+os_fg = "#152528"
+dir_bg = "#7aa4a1"
+dir_fg = "#152528"
+git_bg = "#fda47f"
+git_fg = "#152528"
+lang_bg = "#5a93aa"
+lang_fg = "#152528"
 
 [os]
 disabled = false
