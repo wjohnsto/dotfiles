@@ -3,6 +3,7 @@ alias vi="nvim"
 alias v="nvim"
 alias vimdiff='nvim -d'
 alias dot="cd ${GIT_PROJECT_HOME}/dotfiles && ./dot.sh && cd - > /dev/null"
+alias src="cd ${GIT_PROJECT_HOME}"
 alias wezterm="flatpak run org.wezfurlong.wezterm"
 alias power="powerprofilesctl"
 alias power-performance="powerprofilesctl set performance"
