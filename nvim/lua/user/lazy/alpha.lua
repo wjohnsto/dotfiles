@@ -105,7 +105,7 @@ return {
               end
 
               v.opts.hl = hl
-              return ico_txt .. fn, hl
+              return ico_txt .. short_fn, hl
             end
 
             for _, v in pairs(mru.val) do
