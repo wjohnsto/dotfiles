@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=bash /home/wjohnsto/.config/startup/autostart.sh
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=Custom Startup
+Comment[en_US]=No description
+X-GNOME-Autostart-Delay=3
+

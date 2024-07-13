@@ -6,6 +6,7 @@
 . scripts/reset.sh
 . scripts/update.sh
 . scripts/symlinks.sh
+. scripts/copy.sh
 
 info "Dotfiles setup..."
 log "What would you like to do?"

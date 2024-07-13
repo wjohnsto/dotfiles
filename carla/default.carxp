@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE CARLA-PROJECT>
+<CARLA-PROJECT VERSION='2.4'>
+ <EngineSettings>
+  <ForceStereo>false</ForceStereo>
+  <PreferPluginBridges>false</PreferPluginBridges>
+  <PreferUiBridges>true</PreferUiBridges>
+  <UIsAlwaysOnTop>false</UIsAlwaysOnTop>
+  <MaxParameters>200</MaxParameters>
+  <UIBridgesTimeout>4000</UIBridgesTimeout>
+ </EngineSettings>
+
+ <Transport>
+  <BeatsPerMinute>120</BeatsPerMinute>
+ </Transport>
+
+ <!-- Noise repellent Adaptive -->
+ <Plugin>
+  <Info>
+   <Type>LV2</Type>
+   <Name>Noise repellent Adaptive</Name>
+   <URI>https://github.com/lucianodato/noise-repellent#adaptive-stereo</URI>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <DryWet>0</DryWet>
+   <Volume>1.27</Volume>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x1</Options>
+
+   <Parameter>
+    <Index>0</Index>
+    <Name>Reduction amount</Name>
+    <Symbol>reduction</Symbol>
+    <Value>10</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>1</Index>
+    <Name>Reduction strenght</Name>
+    <Symbol>offset</Symbol>
+    <Value>2</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>2</Index>
+    <Name>Smoothing</Name>
+    <Symbol>smoothing</Symbol>
+    <Value>0</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>3</Index>
+    <Name>Residual listen</Name>
+    <Symbol>Residual_listen</Symbol>
+    <Value>0</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>4</Index>
+    <Name>Enable</Name>
+    <Symbol>enable</Symbol>
+    <Value>1</Value>
+   </Parameter>
+  </Data>
+ </Plugin>
+
+ <!-- Calf Emphasis -->
+ <Plugin>
+  <Info>
+   <Type>LV2</Type>
+   <Name>Calf Emphasis</Name>
+   <URI>http://calf.sourceforge.net/plugins/Emphasis</URI>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <DryWet>0</DryWet>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x3f1</Options>
+
+   <Parameter>
+    <Index>0</Index>
+    <Name>Bypass</Name>
+    <Symbol>bypass</Symbol>
+    <Value>0</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>1</Index>
+    <Name>Input Gain</Name>
+    <Symbol>level_in</Symbol>
+    <Value>2.12420105934143</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>2</Index>
+    <Name>Output Gain</Name>
+    <Symbol>level_out</Symbol>
+    <Value>2.67231893539429</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>11</Index>
+    <Name>Filter Mode</Name>
+    <Symbol>mode</Symbol>
+    <Value>0</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>12</Index>
+    <Name>Filter Type</Name>
+    <Symbol>type</Symbol>
+    <Value>8</Value>
+   </Parameter>
+
+   <CustomData>
+    <Type>http://kxstudio.sf.net/ns/carla/property</Type>
+    <Key>CarlaSkinIsCompacted</Key>
+    <Value>false</Value>
+   </CustomData>
+  </Data>
+ </Plugin>
+
+ <!-- Audio Gain (Stereo) -->
+ <Plugin>
+  <Info>
+   <Type>LV2</Type>
+   <Name>Audio Gain (Stereo)</Name>
+   <URI>http://kxstudio.sf.net/carla/plugins/audiogain_s</URI>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <Volume>1.27</Volume>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x4</Options>
+
+   <Parameter>
+    <Index>1</Index>
+    <Name>Gain</Name>
+    <Symbol>gain</Symbol>
+    <Value>4</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>2</Index>
+    <Name>Apply Left</Name>
+    <Symbol>apply_left</Symbol>
+    <Value>1</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>3</Index>
+    <Name>Apply Right</Name>
+    <Symbol>apply_right</Symbol>
+    <Value>1</Value>
+   </Parameter>
+  </Data>
+ </Plugin>
+
+ <ExternalPatchbay>
+  <Connection>
+   <Source>system:capture_1</Source>
+   <Target>Noise repellent Adaptive:Input Left</Target>
+  </Connection>
+  <Connection>
+   <Source>system:capture_2</Source>
+   <Target>Noise repellent Adaptive:Input Right</Target>
+  </Connection>
+  <Connection>
+   <Source>Noise repellent Adaptive:Output Left</Source>
+   <Target>Calf Emphasis:In L</Target>
+  </Connection>
+  <Connection>
+   <Source>Noise repellent Adaptive:Output Right</Source>
+   <Target>Calf Emphasis:In R</Target>
+  </Connection>
+  <Connection>
+   <Source>Calf Emphasis:Out L</Source>
+   <Target>Audio Gain (Stereo):Audio Input 1</Target>
+  </Connection>
+  <Connection>
+   <Source>Calf Emphasis:Out R</Source>
+   <Target>Audio Gain (Stereo):Audio Input 2</Target>
+  </Connection>
+  <Connection>
+   <Source>Audio Gain (Stereo):Audio Output 1</Source>
+   <Target>pulse_in:front-left</Target>
+  </Connection>
+  <Connection>
+   <Source>Audio Gain (Stereo):Audio Output 2</Source>
+   <Target>pulse_in:front-right</Target>
+  </Connection>
+  <Connection>
+   <Source>pulse_out:front-left</Source>
+   <Target>system:playback_1</Target>
+  </Connection>
+  <Connection>
+   <Source>pulse_out:front-right</Source>
+   <Target>system:playback_2</Target>
+  </Connection>
+ </ExternalPatchbay>
+</CARLA-PROJECT>
+

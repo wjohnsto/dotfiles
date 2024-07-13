@@ -6,10 +6,14 @@ ROOT_DIR=$(pwd)
 
 . $SCRIPT_DIR/utils.sh
 . $SCRIPT_DIR/symlinks.sh
+. $SCRIPT_DIR/copy.sh
 
 deploy() {
   delete_symlinks
   create_symlinks
+
+  delete_copies
+  create_copies
 
   info "Adding fonts..."
   fc-cache -f ~/.fonts
