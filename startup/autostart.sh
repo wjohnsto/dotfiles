@@ -7,6 +7,10 @@ wmctrl -s 1
 
 sleep 1
 
+/opt/docker-desktop/bin/docker-desktop
+
+sleep 1
+
 # sudo python3 ~/dns-changer/main.py & disown
 dns_changer & disown
 
