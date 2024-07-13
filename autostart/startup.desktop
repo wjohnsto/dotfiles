@@ -6,5 +6,5 @@ NoDisplay=false
 Hidden=false
 Name[en_US]=Custom Startup
 Comment[en_US]=No description
-X-GNOME-Autostart-Delay=3
+X-GNOME-Autostart-Delay=5
 
