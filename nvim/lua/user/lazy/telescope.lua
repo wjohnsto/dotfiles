@@ -161,5 +161,8 @@ return {
 
     -- Open find symbols list
     vim.keymap.set("n", "<leader>os", "<cmd>Telescope aerial<CR>", { desc = "Find symbol" })
+
+    -- Open Commit list
+    vim.keymap.set("n", "<leader>gc", builtin.git_bcommits, { desc = "Find commits for buffer" })
   end,
 }
