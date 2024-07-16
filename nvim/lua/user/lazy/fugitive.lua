@@ -9,7 +9,7 @@ return {
     -- Enter fugitive
     vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
-    local fugitive_group = vim.api.nvim_create_augroup("wjohnsto_fugitive", {})
+    local fugitive_group = vim.api.nvim_create_augroup("user_fugitive", {})
 
     local autocmd = vim.api.nvim_create_autocmd
 

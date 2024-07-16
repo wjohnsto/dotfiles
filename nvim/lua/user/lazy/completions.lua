@@ -42,7 +42,7 @@ return {
 
       cmp.setup({
         completion = {
-          autocomplete = false,
+          -- autocomplete = false,
         },
         snippet = {
           -- REQUIRED - you must specify a snippet engine
