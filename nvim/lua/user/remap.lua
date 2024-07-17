@@ -3,6 +3,9 @@ vim.g.mapleader = " "
 
 local map = vim.keymap.set;
 
+-- Format line to respect textwidth
+map("n", "<leader>V", "V}gq", { desc = "Format paragraph" })
+
 -- Swap current line with next line in visual mode
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
 
