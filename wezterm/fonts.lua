@@ -4,7 +4,7 @@ local exports = {}
 function exports:apply(config)
   config.font_dirs = { "~/.fonts" }
   config.font = wezterm.font_with_fallback({
-    { family = "FiraMono Nerd Font Mono", weight = "Medium" },
+    { family = "FiraMono Nerd Font Mono", weight = "Regular" },
     { family = "icomoon",                 weight = "Medium" },
   })
 end
