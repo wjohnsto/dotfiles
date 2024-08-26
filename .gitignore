@@ -2,3 +2,4 @@
 .uuid
 .tmp*
 *.tmp
+.bash_private

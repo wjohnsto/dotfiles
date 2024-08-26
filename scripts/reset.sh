@@ -14,5 +14,8 @@ reset_nvim() {
 
 reset() {
   reset_nvim
+
+  info "Sourcing bash profile..."
+  source ~/.bash_profile
 }
 
