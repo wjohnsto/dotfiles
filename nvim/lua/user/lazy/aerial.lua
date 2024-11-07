@@ -15,7 +15,7 @@ return {
         placement = "edge",
         resize_to_content = false,
       },
-      open_automatic = true,
+      open_automatic = false,
       close_automatic_events = { "unfocus", "switch_buffer", "unsupported" },
       -- optionally use on_attach to set keymaps when aerial has attached to a buffer
       on_attach = function(bufnr)

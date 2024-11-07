@@ -9,7 +9,9 @@
   excludesfile = ~/.gitignore_global
   autocrlf = input
 [color]
-    ui = auto
+  ui = auto
+[pull]
+  rebase = false
 [push]
 	autoSetupRemote = true
 [diff]

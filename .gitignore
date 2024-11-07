@@ -1,4 +1,4 @@
-.aws/
+private/
 .uuid
 .tmp*
 *.tmp

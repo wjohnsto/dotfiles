@@ -41,7 +41,7 @@ return {
         "html",
         "htmx",
         "jsonls",
-        "tsserver",
+        "ts_ls",
         "lua_ls",
         "remark_ls",
         "mdx_analyzer",
