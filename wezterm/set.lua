@@ -21,6 +21,7 @@ function exports:apply(config)
   config.skip_close_confirmation_for_processes_named = {}
   config.disable_default_key_bindings = true
   config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+
   local keys = {
     -- Leader fix: Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A.
     { key = "a", mods = "LEADER|CTRL", action = act.SendString("\x01") },
@@ -32,4 +33,3 @@ function exports:apply(config)
 end
 
 return exports
-

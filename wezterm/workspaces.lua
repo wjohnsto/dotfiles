@@ -107,7 +107,16 @@ local action = wezterm.action_callback(function(window, pane, id, label)
   end
 
   if not workspace_exists then
-    mux.spawn_window({ workspace = clean_workspace_name(label), cwd = id })
+    local tab1, _, win = mux.spawn_window({ workspace = clean_workspace_name(label), cwd = id })
+    tab1:set_title("editor")
+
+    local tab2 = win:spawn_tab({ cwd = id })
+    tab2:set_title("terminal")
+
+    local tab3 = win:spawn_tab({ cwd = id })
+    tab3:set_title("git")
+
+    tab1:activate()
     wezterm.log_info("spawning window for " .. id .. ".")
   end
 

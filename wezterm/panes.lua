@@ -21,7 +21,7 @@ function exports:apply(config)
 			mods = "LEADER|SHIFT",
 			action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 		},
-		{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
+		{ key = "x", mods = "CTRL", action = act.CloseCurrentPane({ confirm = false }) },
 	}
 
 	for _, key in ipairs(keys) do
