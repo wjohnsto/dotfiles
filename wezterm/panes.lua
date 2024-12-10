@@ -9,7 +9,7 @@ function exports:apply(config)
 		{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
 		{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
 		{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-		{ key = "s", mods = "LEADER", action = act.PaneSelect },
+		-- { key = "s", mods = "LEADER", action = act.PaneSelect },
 		-- Create/close panes.
 		{
 			key = "_",

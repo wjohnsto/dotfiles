@@ -86,7 +86,7 @@ autocmd("LspAttach", {
     vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts("Code actions"))
 
     -- Find references
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Fine references"))
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Find references"))
 
     -- Open diagnostics flow
     -- Mapped to <C-W>d or <C-W><C-D> in Neovim >=0.10.0 ... good enough

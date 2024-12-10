@@ -5,7 +5,7 @@ local exports = {}
 function exports:apply(config)
   local keys = {
     -- Launcher.
-    { key = "s", mods = "LEADER|SHIFT", action = act.ShowLauncher },
+    { key = "s", mods = "LEADER", action = act.ShowLauncher },
     { key = "n", mods = "LEADER|SHIFT", action = act.SwitchWorkspaceRelative(1) },
     { key = "p", mods = "LEADER|SHIFT", action = act.SwitchWorkspaceRelative(-1) },
   }

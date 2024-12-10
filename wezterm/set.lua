@@ -25,6 +25,7 @@ function exports:apply(config)
   local keys = {
     -- Leader fix: Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A.
     { key = "a", mods = "LEADER|CTRL", action = act.SendString("\x01") },
+    { key = "F11", action = act.ToggleFullScreen },
   }
 
   for _, key in ipairs(keys) do
