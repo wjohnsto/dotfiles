@@ -15,6 +15,8 @@ return {
     "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
+    "hrsh7th/nvim-cmp",
+    "zbirenbaum/copilot.lua",
     --- The below is optional, make sure to setup it properly if you have lazy=true
     {
       'MeanderingProgrammer/render-markdown.nvim',

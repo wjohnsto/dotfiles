@@ -4,6 +4,26 @@ local act = wezterm.action
 
 local exports = {}
 local git_project_home_dir = wezterm.home_dir .. "/src"
+local action_new_workspace = act.PromptInputLine({
+  description = wezterm.format({
+    { Attribute = { Intensity = "Bold" } },
+    { Foreground = { AnsiColor = "Fuchsia" } },
+    { Text = "Enter name for new workspace" },
+  }),
+  action = wezterm.action_callback(function(workspace, pane, line)
+    -- line will be `nil` if they hit escape without entering anything
+    -- An empty string if they just hit enter
+    -- Or the actual line of text they wrote
+    if line then
+      workspace:perform_action(
+        act.SwitchToWorkspace({
+          name = line,
+        }),
+        pane
+      )
+    end
+  end),
+})
 
 local function clean_workspace_name(name)
   name = name:gsub("* ", "")
@@ -89,11 +109,22 @@ local function get_workspaces()
     return a.label < b.label
   end)
 
+  table.insert(choices, {
+    label = "Create a new workspace",
+    id = "n",
+  })
+
   return choices
 end
 
-local action = wezterm.action_callback(function(window, pane, id, label)
+local action_switch_workspace = wezterm.action_callback(function(window, pane, id, label)
   if not id and not label then
+    return
+  end
+
+  if id == "n" then
+    window:perform_action(action_new_workspace, pane)
+
     return
   end
 
@@ -129,48 +160,36 @@ local action = wezterm.action_callback(function(window, pane, id, label)
   )
 end)
 
+local action_select_workspace = wezterm.action_callback(function(window, pane)
+  window:perform_action(
+    act.InputSelector({
+      title = "Select workspace",
+      description = "(" .. git_project_home_dir .. ") Select workspace: Enter = accept, Esc = cancel, / = filter",
+      choices = get_workspaces(),
+      action = action_switch_workspace,
+    }), pane)
+end)
+
+
 function exports:apply(config)
   local keys = {
+    {
+      key = "w",
+      mods = "LEADER",
+      -- Asks to select a workspace from a list of pre-defined and already existing workspaces.
+      -- First, if the selected workspace does not already exist, spawn a window in it with
+      -- a specifed cwd. Then, switch to the workspace.
+      action = action_select_workspace
+    },
     {
       key = "f",
       mods = "LEADER",
       -- Asks to select a workspace from a list of pre-defined and already existing workspaces.
       -- First, if the selected workspace does not already exist, spawn a window in it with
       -- a specifed cwd. Then, switch to the workspace.
-      action = wezterm.action_callback(function(window, pane)
-        window:perform_action(
-          act.InputSelector({
-            title = "Select workspace",
-            description = "(" .. git_project_home_dir .. ") Select workspace: Enter = accept, Esc = cancel, / = filter",
-            choices = get_workspaces(),
-            action = action,
-          }), pane)
-      end)
+      action = action_select_workspace
     },
-    {
-      key = "w",
-      mods = "LEADER",
-      action = act.PromptInputLine({
-        description = wezterm.format({
-          { Attribute = { Intensity = "Bold" } },
-          { Foreground = { AnsiColor = "Fuchsia" } },
-          { Text = "Enter name for new workspace" },
-        }),
-        action = wezterm.action_callback(function(window, pane, line)
-          -- line will be `nil` if they hit escape without entering anything
-          -- An empty string if they just hit enter
-          -- Or the actual line of text they wrote
-          if line then
-            window:perform_action(
-              act.SwitchToWorkspace({
-                name = line,
-              }),
-              pane
-            )
-          end
-        end),
-      }),
-    },
+
   }
 
   for _, key in ipairs(keys) do

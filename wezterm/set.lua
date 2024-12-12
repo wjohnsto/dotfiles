@@ -22,10 +22,13 @@ function exports:apply(config)
   config.disable_default_key_bindings = true
   config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
+  wezterm.log_warn("Test")
+
   local keys = {
     -- Leader fix: Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A.
-    { key = "a", mods = "LEADER|CTRL", action = act.SendString("\x01") },
+    { key = "a",   mods = "LEADER|CTRL",         action = act.SendString("\x01") },
     { key = "F11", action = act.ToggleFullScreen },
+    { key = 'L',   mods = 'CTRL',                action = wezterm.action.ShowDebugOverlay },
   }
 
   for _, key in ipairs(keys) do
