@@ -11,6 +11,9 @@ fi
 
 ### PATHs
 
+# sqlcmd and bcp
+export PATH="$PATH:/opt/mssql-tools18/bin"
+
 # fzf
 if [[ ! "$PATH" == */$HOME/.fzf/bin* ]]; then
   PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"

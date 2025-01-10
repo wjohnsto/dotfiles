@@ -137,20 +137,52 @@ local action_switch_workspace = wezterm.action_callback(function(window, pane, i
     end
   end
 
+  local venv_exists = false
+  for _, name in ipairs(wezterm.read_dir(id)) do
+    if name == id .. "/.venv" then
+      venv_exists = true
+      break
+    end
+  end
+
   if not workspace_exists then
-    local tab1, _, win = mux.spawn_window({ workspace = clean_workspace_name(label), cwd = id })
+    local spawn_cmd = { workspace = clean_workspace_name(label), cwd = id }
+
+    local tab1, pane1, win = mux.spawn_window(spawn_cmd)
 
     tab1:set_title("editor")
 
-    local tab2 = win:spawn_tab({ cwd = id })
+    local tab2, pane2 = win:spawn_tab({ cwd = id })
     tab2:set_title("terminal")
 
-    local tab3 = win:spawn_tab({ cwd = id })
+    local tab3, pane3 = win:spawn_tab({ cwd = id })
     tab3:set_title("git")
+
+    local text1 = "nvim\n"
+    local text2 = ""
+    local text3 = "git status\n"
+    if venv_exists then
+      text1 = "source .venv/bin/activate && nvim\n"
+      text2 = "source .venv/bin/activate\n"
+      text3 = "source .venv/bin/activate && git status\n"
+    end
+
+    if string.len(text1) > 0 then
+      pane1:send_text(text1)
+    end
+
+    if string.len(text2) > 0 then
+      pane2:send_text(text2)
+    end
+
+    if string.len(text3) > 0 then
+      pane3:send_text(text3)
+    end
 
     tab1:activate()
     wezterm.log_info("spawning window for " .. id .. ".")
   end
+
 
   window:perform_action(
     act.SwitchToWorkspace({
