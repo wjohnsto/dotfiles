@@ -44,7 +44,11 @@ local function get_workspaces()
   -- Add existing workspaces to the list of choices.
   for _, name in pairs(mux.get_workspace_names()) do
     local cname = clean_workspace_name(name)
-    table.insert(choices, { label = "* " .. cname, id = git_project_home_dir .. cname })
+    if cname == "default" then
+      table.insert(choices, { label = "* " .. cname, id = cname })
+    else
+      table.insert(choices, { label = "* " .. cname, id = git_project_home_dir .. cname })
+    end
   end
 
   -- Keep track of added workspaces.
@@ -121,8 +125,21 @@ local action_switch_workspace = wezterm.action_callback(function(window, pane, i
     return
   end
 
+  wezterm.log_info("attempting to switch to workspace id: " .. id .. ", label: " .. label .. ".")
+
   if id == "n" then
     window:perform_action(action_new_workspace, pane)
+
+    return
+  end
+
+  if not string.find(id, git_project_home_dir) then
+    window:perform_action(
+      act.SwitchToWorkspace({
+        name = clean_workspace_name(label),
+      }),
+      pane
+    )
 
     return
   end
