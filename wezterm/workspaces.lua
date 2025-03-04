@@ -18,6 +18,9 @@ local action_new_workspace = act.PromptInputLine({
       workspace:perform_action(
         act.SwitchToWorkspace({
           name = line,
+          spawn = {
+            cwd = wezterm.home_dir
+          }
         }),
         pane
       )
@@ -44,7 +47,7 @@ local function get_workspaces()
   -- Add existing workspaces to the list of choices.
   for _, name in pairs(mux.get_workspace_names()) do
     local cname = clean_workspace_name(name)
-    if cname == "default" then
+    if not string.find(cname, "/") then
       table.insert(choices, { label = "* " .. cname, id = cname })
     else
       table.insert(choices, { label = "* " .. cname, id = git_project_home_dir .. cname })
