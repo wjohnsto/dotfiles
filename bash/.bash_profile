@@ -1,4 +1,3 @@
-
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -11,6 +10,9 @@ fi
 
 ### PATHs
 
+# java
+export JAVA_HOME="/usr"
+
 # sqlcmd and bcp
 export PATH="$PATH:/opt/mssql-tools18/bin"
 
@@ -20,7 +22,9 @@ if [[ ! "$PATH" == */$HOME/.fzf/bin* ]]; then
 fi
 
 # Neovim
-export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export VIM="/opt/nvim-linux-x86_64/share/nvim"
+export VIMRUNTIME="/opt/nvim-linux-x86_64/share/nvim/runtime"
 
 # Go
 export PATH="$PATH:/usr/local/go/bin"
@@ -40,6 +44,10 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # NVM
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -51,6 +59,10 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+# fly.io
+export FLYCTL_INSTALL="$HOME/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 ### Global vars
 export VISUAL=nvim
@@ -74,6 +86,7 @@ fi
 
 # fzf
 eval "$(fzf --bash)"
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Starship
 eval "$(starship init bash)"
@@ -87,3 +100,9 @@ eval "$(fnm env --use-on-cd --shell bash)"
 # pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/wjohnsto/.local/bin/google-cloud-sdk/path.bash.inc' ]; then . '/home/wjohnsto/.local/bin/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/wjohnsto/.local/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/home/wjohnsto/.local/bin/google-cloud-sdk/completion.bash.inc'; fi

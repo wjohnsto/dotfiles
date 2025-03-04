@@ -74,11 +74,10 @@ local function get_workspaces()
         if Is_Git(name) then
           local short_path = remove_home_dir(path)
           add_workspace({ label = short_path, id = path })
-          goto continue
+          break
         end
 
         add_path(name, depth + 1, ignores)
-        ::continue::
       end
     end
   end
