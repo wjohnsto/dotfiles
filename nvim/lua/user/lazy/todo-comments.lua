@@ -8,6 +8,6 @@ return {
     require("todo-comments").setup({})
 
     -- Open todo list in telescope
-    vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", { desc = "Todo list" })
+    vim.keymap.set("n", "<leader>td", ":TodoQuickFix<CR>", { desc = "Todo list" })
   end,
 }
