@@ -23,6 +23,7 @@ autocmd("BufRead", {
     if vim.bo[ev.buf].buftype == "quickfix" then
       vim.schedule(function()
         vim.cmd([[cclose]])
+        ---@module 'snacks'
         Snacks.picker.qflist()
       end)
     end
