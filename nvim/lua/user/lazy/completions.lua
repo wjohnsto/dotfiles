@@ -34,15 +34,28 @@ return {
       "hrsh7th/cmp-cmdline",
       -- See highlight-colors.lua
       "brenoprata10/nvim-highlight-colors",
+      -- copilot
+      -- https://github.com/zbirenbaum/copilot.lua
+      "zbirenbaum/copilot.lua",
+      -- copilot-cmp
+      -- https://github.com/zbirenbaum/copilot-cmp
+      "zbirenbaum/copilot-cmp",
+
     },
     config = function()
       local cmp = require("cmp")
       -- Load some of the vscode snippets
       require("luasnip.loaders.from_vscode").lazy_load()
 
+      require("copilot").setup({
+        -- copilot_model = "gpt-4o-copilot",
+        copilot_model = "gemini-2.0-flash",
+      })
+      require("copilot_cmp").setup()
+
       cmp.setup({
         completion = {
-          -- autocomplete = false,
+          autocomplete = false,
         },
         snippet = {
           -- REQUIRED - you must specify a snippet engine
@@ -59,9 +72,11 @@ return {
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<Tab>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
+          -- Copilot Source
+          { name = "copilot", group_index = 2 },
           { name = "nvim_lsp" },
           { name = "luasnip" },
         }, {

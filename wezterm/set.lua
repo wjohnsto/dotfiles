@@ -27,6 +27,7 @@ function exports:apply(config)
     { key = "a",   mods = "LEADER|CTRL",         action = act.SendString("\x01") },
     { key = "F11", action = act.ToggleFullScreen },
     { key = 'L',   mods = 'CTRL',                action = wezterm.action.ShowDebugOverlay },
+    { key = 'n', mods = 'SHIFT|CTRL', action = wezterm.action.SpawnWindow },
   }
 
   for _, key in ipairs(keys) do

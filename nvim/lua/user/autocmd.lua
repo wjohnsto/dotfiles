@@ -16,7 +16,7 @@ autocmd("TextYankPost", {
   end,
 })
 
--- Open all quickfix lists in Trouble
+-- Open all quickfix lists in Snacks picker
 autocmd("BufRead", {
   group = user_group,
   callback = function(ev)
@@ -49,19 +49,9 @@ autocmd("LspAttach", {
         desc = desc,
       }
     end
-
-    -- Go to declaration
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
-
-    -- Go to definition
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
-
     -- Signature info
     -- Not needed in Neovim >=0.10.0
-    --vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("Hover info"))
-
-    -- Go to implementation
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts("Go to implementation"))
+    -- vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("Hover info"))
 
     -- Signature help
     vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, opts("Signature help"))
@@ -77,17 +67,11 @@ autocmd("LspAttach", {
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts("List ws folders"))
 
-    -- Go to type definition
-    vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts("Go to typedef"))
-
     -- Rename symbol
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts("Rename"))
 
     -- See code actions menu
     vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts("Code actions"))
-
-    -- Find references
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Find references"))
 
     -- Open diagnostics flow
     -- Mapped to <C-W>d or <C-W><C-D> in Neovim >=0.10.0 ... good enough
@@ -103,7 +87,7 @@ autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts("Set loclist"))
 
     -- Format file
-    vim.keymap.set("n", "<leader>f", function()
+    vim.keymap.set("n", "<leader>i", function()
       vim.lsp.buf.format({ async = true })
     end, opts("Format file"))
   end,

@@ -29,7 +29,7 @@ vim.opt.incsearch = true
 vim.opt.inccommand = "split"
 
 -- redraw for macros
-vim.opt.lazyredraw = true
+-- vim.opt.lazyredraw = true
 
 -- Automatic in Neovim >=0.10.0
 -- vim.opt.termguicolors = true

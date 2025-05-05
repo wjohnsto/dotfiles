@@ -29,11 +29,11 @@ map("n", "N", "Nzzzv", { desc = "Previous search item" })
 
 -- Center the cursor to the search term when using "/"
 map("c", "<CR>", function()
-	return vim.fn.getcmdtype() == "/" and "<CR>zzzv" or "<CR>"
+  return vim.fn.getcmdtype() == "/" and "<CR>zzzv" or "<CR>"
 end, { expr = true })
 
--- Paste from yank into highlighted area, then yank the highlighted area
-map("x", "<leader>p", [["_dP]], { desc = "Paste and yank" })
+-- Paste from yank register into highlighted area without yanking
+map("x", "<leader>p", [["_dP]], { desc = "Paste w/o yank" })
 
 -- Yank to clipboard
 map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to clipboard" })
@@ -59,22 +59,8 @@ map("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next location" })
 -- Move to previous item in loclist, center cursor
 map("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Prev location" })
 
--- Take current word and put it into find/replace command, add "/gIc" for automatic confirmation
-map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Find/replace" })
+-- Take current word and put it into find/replace command, add "/gIc" for
+-- automatic confirmation
+map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Find/replace" })
 
--- Modify current scipt as executable
-map("n", "<leader>x", "<cmd>!chmod +x %<CR>", {
-	silent = true,
-	desc = "chmod +x",
-})
-
--- Source current file
-map("n", "<leader><leader>", function()
-	vim.cmd("so")
-end)
-
--- HJKL LDUR mode
--- map("n", "<Left>", "<nop>")
--- map("n", "<Down>", "<nop>")
--- map("n", "<Up>", "<nop>")
--- map("n", "<Right>", "<nop>")

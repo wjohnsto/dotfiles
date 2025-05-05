@@ -172,18 +172,18 @@ local action_switch_workspace = wezterm.action_callback(function(window, pane, i
     tab1:set_title("editor")
 
     local tab2, pane2 = win:spawn_tab({ cwd = id })
-    tab2:set_title("terminal")
+    tab2:set_title("short term")
 
     local tab3, pane3 = win:spawn_tab({ cwd = id })
-    tab3:set_title("git")
+    tab3:set_title("long term")
 
     local text1 = "nvim\n"
-    local text2 = ""
-    local text3 = "git status\n"
+    local text2 = "git status\n"
+    local text3 = ""
     if venv_exists then
       text1 = "source .venv/bin/activate && nvim\n"
-      text2 = "source .venv/bin/activate\n"
-      text3 = "source .venv/bin/activate && git status\n"
+      text2 = "source .venv/bin/activate && git status\n"
+      text3 = "source .venv/bin/activate\n"
     end
 
     if string.len(text1) > 0 then

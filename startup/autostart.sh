@@ -13,9 +13,9 @@ pavucontrol &>/dev/null & disown
 sleep 3
 
 # sudo python3 ~/dns-changer/main.py & disown
-dns_changer &>/dev/null & disown
+# dns_changer &>/dev/null & disown
 
-sleep 6
+# sleep 6
 
 carla ~/Carla/default.carxp &>/dev/null & disown
 
