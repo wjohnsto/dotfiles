@@ -7,6 +7,10 @@ wmctrl -s 1
 
 sleep 1
 
+tailscale up --accept-dns=false & disown
+
+sleep 1
+
 # studio-controls &>/dev/null & disown
 pavucontrol &>/dev/null & disown
 
@@ -18,4 +22,3 @@ sleep 3
 # sleep 6
 
 carla ~/Carla/default.carxp &>/dev/null & disown
-
