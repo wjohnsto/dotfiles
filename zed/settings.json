@@ -10,10 +10,18 @@
   "vim_mode": false,
   "ui_font_size": 16,
   "buffer_font_size": 16,
-  "buffer_font_family": "FiraMono Nerd Font Mono",
+  "buffer_font_family": "JetBrainsMonoNL Nerd Font",
+  "buffer_font_fallbacks": ["FiraMono Nerd Font Mono"],
   "theme": {
     "mode": "system",
     "light": "One Light",
     "dark": "Carbonfox"
+  },
+  "autosave": "on_focus_change",
+  "format_on_save": "off",
+  "icon_theme": {
+    "mode": "system",
+    "dark": "Catppuccin Mocha",
+    "light": "Catppuccin Frappé"
   }
 }
