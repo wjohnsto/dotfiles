@@ -1,6 +1,22 @@
 {
+  "edit_predictions": {
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null
+    },
+    "enabled_in_text_threads": false
+  },
+  "agent": {
+    "model_parameters": [],
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-2.5-flash-preview-04-17"
+    },
+    "version": "2"
+  },
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "copilot"
   },
   "telemetry": {
     "diagnostics": false,
@@ -15,7 +31,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Carbonfox"
+    "dark": "MyTheme Dark"
   },
   "autosave": "on_focus_change",
   "format_on_save": "off",
@@ -23,5 +39,9 @@
     "mode": "system",
     "dark": "Catppuccin Mocha",
     "light": "Catppuccin Frappé"
+  },
+  "experimental.theme_overrides": {
+    "editor.document_highlight.read_background": "#525253",
+    "border": "#3d3d3e"
   }
 }

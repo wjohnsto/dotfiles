@@ -1768,14 +1768,6 @@
    <Target>eq-initial:Input R</Target>
   </Connection>
   <Connection>
-   <Source>Audio Gain (Stereo):Audio Output 1</Source>
-   <Target>PulseAudio Volume Control:input_FL-90</Target>
-  </Connection>
-  <Connection>
-   <Source>Audio Gain (Stereo):Audio Output 2</Source>
-   <Target>PulseAudio Volume Control:input_FR-92</Target>
-  </Connection>
-  <Connection>
    <Source>eq-initial:Output L</Source>
    <Target>compressor:Input L</Target>
   </Connection>
@@ -1798,30 +1790,6 @@
   <Connection>
    <Source>eq-final:Output R</Source>
    <Target>Audio Gain (Stereo):Audio Input 2</Target>
-  </Connection>
-  <Connection>
-   <Source>LibreWolf:output_FL</Source>
-   <Target>SSL 2+ Pro:playback_AUX0</Target>
-  </Connection>
-  <Connection>
-   <Source>LibreWolf:output_FL</Source>
-   <Target>PulseAudio Volume Control:input_FL-644</Target>
-  </Connection>
-  <Connection>
-   <Source>LibreWolf:output_FR</Source>
-   <Target>SSL 2+ Pro:playback_AUX1</Target>
-  </Connection>
-  <Connection>
-   <Source>LibreWolf:output_FR</Source>
-   <Target>PulseAudio Volume Control:input_FR-646</Target>
-  </Connection>
-  <Connection>
-   <Source>SSL 2+ Pro:monitor_AUX0</Source>
-   <Target>PulseAudio Volume Control:input_FL</Target>
-  </Connection>
-  <Connection>
-   <Source>SSL 2+ Pro:monitor_AUX1</Source>
-   <Target>PulseAudio Volume Control:input_FR</Target>
   </Connection>
  </ExternalPatchbay>
 </CARLA-PROJECT>
